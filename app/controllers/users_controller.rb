@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
-   before_action :set_user, only: [:edit, :update]
+  before_action :set_user, only: [:show,:edit, :update]
+  before_action :logged_in_user, only: [:show, :edit, :update]
+  before_action :authenticate!, only: [:edit, :update]
+
 
   def show 
    @user = User.find(params[:id])
@@ -44,6 +47,13 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+  
+# check current_user is editing self ?
+  def authenticate!
+    if @user != current_user
+      redirect_to root_url, flash: { alert: "不正なアクセス" }
+    end
   end
 end
  
