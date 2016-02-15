@@ -4,9 +4,9 @@
     <div class="alert alert-danger">
       <%= alert %>
       <ul>
-        <% @user.errors.full_users.each do |full_user| %>
+        <% @user.errors.full_messages.each do |err_msg| %>
           <li>
-            <%= full_user %>
+            <%= err_msg %>
           </li>
         <% end %> 
       </ul>
