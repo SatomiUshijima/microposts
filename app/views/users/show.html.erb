@@ -1,19 +1,19 @@
-<h1>
-  <%= gravatar_for @user %>
-  <%= @user.name %><br/>
-</h1>
-  <div class="form-group">
-    <label for="user_name" class="col-sm-4 control-label">　</label>
-    <label for="user_name" class="col-sm-4 control-label">mail:　<%= @user.email %></label>
-    <label for="user_name" class="col-sm-4 control-label">　</label>
+
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <% if @user.microposts.any? %>
+      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+    <% end %>
   </div>
-  <div class="form-group">
-    <label for="user_location" class="col-sm-4 control-label">　</label>
-    <label for="user_location" class="col-sm-4 control-label">location:　<%= @user.location %></label>
-    <label for="user_location" class="col-sm-4 control-label">　</label>
-  </div>
-  <div class="form-group">
-    <label for="user_profile" class="col-sm-4 control-label">　</label>
-    <label for="user_profile" class="col-sm-4 control-label">profile:　<%= @user.profile %></label>
-    <label for="user_profile" class="col-sm-4 control-label">　</label>
-  </div>
+</div>

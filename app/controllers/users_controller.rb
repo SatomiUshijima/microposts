@@ -3,8 +3,10 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:show, :edit, :update]
   before_action :authenticate!, only: [:edit, :update]
 
-  def show 
-   @user = User.find(params[:id])
+  # つぶやき一案表示
+  def show
+    @user = User.find(params[:id])
+    @microposts = @user.microposts.order(created_at: :desc)
   end
 
   def new
@@ -48,11 +50,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
   
-# check current_user is editing self ?
+  # check current_user is editing self ?
   def authenticate!
     if @user != current_user
       redirect_to root_url, flash: { alert: "不正なアクセス" }
     end
   end
+  
+
 end
  
