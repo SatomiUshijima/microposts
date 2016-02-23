@@ -1,0 +1,6 @@
+<% @relationships.each do |following| %>
+    <% if following.id != @user.id  %>
+        <%= following.name %><br/>
+    <% end %>       
+<% end %>
+<%= link_to '戻る', :back %> 

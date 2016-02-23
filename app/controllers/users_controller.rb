@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :followings, :followers]
   before_action :logged_in_user, only: [:show, :edit, :update]
   before_action :authenticate!, only: [:edit, :update]
 
@@ -8,7 +8,18 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @microposts = @user.microposts.order(created_at: :desc)
   end
-
+  # フォローしているユーザ表示
+  def followings
+    @user = User.find(params[:id])
+    @relationships = @user.following_users
+  end
+    # フォローされているユーザ表示
+  def followers
+    @user = User.find(params[:id])
+    @relationship2 = @user.follower_users
+  end
+  
+  
   def new
     @user = User.new
   end
