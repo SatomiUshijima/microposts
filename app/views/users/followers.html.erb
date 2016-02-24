@@ -1,6 +1,11 @@
 <% @relationships.each do |follower_users| %>
     <% if follower_users.id != @user.id  %>
-        <%= follower_users.name %><br/>
+        <div>
+          <%= link_to gravatar_for(follower_users, size: 30), user_path(follower_users.id) %>
+          <%= link_to follower_users.name, user_path(follower_users.id) %>
+
+        </div><br/>
     <% end %>
 <% end %>
+
 <%= link_to '戻る', :back %> 
