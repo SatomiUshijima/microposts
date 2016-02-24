@@ -1,4 +1,4 @@
-<% @relationship2.each do |follower_users| %>
+<% @relationships.each do |follower_users| %>
     <% if follower_users.id != @user.id  %>
         <%= follower_users.name %><br/>
     <% end %>

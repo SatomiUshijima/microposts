@@ -5,20 +5,17 @@ class UsersController < ApplicationController
 
   # つぶやき一案表示
   def show
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])
     @microposts = @user.microposts.order(created_at: :desc)
   end
   # フォローしているユーザ表示
   def followings
-    @user = User.find(params[:id])
     @relationships = @user.following_users
   end
     # フォローされているユーザ表示
   def followers
-    @user = User.find(params[:id])
-    @relationship2 = @user.follower_users
+    @relationships = @user.follower_users
   end
-  
   
   def new
     @user = User.new
