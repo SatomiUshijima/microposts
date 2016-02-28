@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   # つぶやき一案表示
   def show
     #@user = User.find(params[:id])
-    @microposts = @user.microposts.order(created_at: :desc)
+    @microposts = @user.microposts.order(created_at: :desc).page(params[:page]).per(5) 
   end
   # フォローしているユーザ表示
   def followings

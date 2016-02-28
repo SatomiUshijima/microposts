@@ -9,8 +9,14 @@
       </section>
     </aside>
     <div class="col-md-8">
+    <!-- 追加箇所開始 -->
+    <%= paginate @feed_items %>
+    <!-- 追加箇所終了 -->
       <h3>Micropost Feed</h3>
       <%= render 'shared/feed' %>
+    <!-- 追加箇所開始 -->
+    <%= paginate @feed_items %>
+    <!-- 追加箇所終了 -->
     </div>
    </div>
 <% else %>

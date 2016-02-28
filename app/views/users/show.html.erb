@@ -1,3 +1,4 @@
+
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
@@ -10,6 +11,9 @@
     </section>
   </aside>
   <div class="col-md-8">
+<!-- 追加箇所開始 -->
+<%= paginate @microposts %>
+<!-- 追加箇所終了 -->
     <%= render 'follow_form' if logged_in? %>
     <% if @user.microposts.any? %>
       <h3>Microposts (<%= @user.microposts.count %>)</h3>
@@ -17,5 +21,8 @@
         <%= render @microposts %>
       </ol>
     <% end %>
+<!-- 追加箇所開始 -->
+<%= paginate @microposts %>
+<!-- 追加箇所終了 -->
   </div>
 </div>
